@@ -1,0 +1,40 @@
+name: Bug report
+description: Report a reproducible problem in AZUL NEX.
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: "Thanks for helping improve AZUL NEX. Please search existing issues before submitting."
+  - type: textarea
+    id: summary
+    attributes:
+      label: What happened?
+      description: Describe the issue clearly.
+      placeholder: What did you expect, and what happened instead?
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce
+      placeholder: "1. Open AZUL NEX\n2. Select an AVD\n3. ..."
+    validations:
+      required: true
+  - type: input
+    id: windows
+    attributes:
+      label: Windows version
+      placeholder: "Windows 11 24H2 / Windows 10 22H2"
+    validations:
+      required: true
+  - type: input
+    id: sdk
+    attributes:
+      label: Android Emulator / SDK version
+      placeholder: "If known"
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs or screenshots
+      description: Remove personal information, access tokens, and private paths before posting.

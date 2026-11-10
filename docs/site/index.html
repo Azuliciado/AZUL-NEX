@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#080b14">
+<meta name="description" content="AZUL NEX is a Windows control center for managing Android virtual devices with Android Emulator and ADB.">
+<title>AZUL NEX — One PC. Infinite Devices.</title>
+<style>
+:root{color-scheme:dark;--bg:#080b14;--panel:#101827;--line:#202d42;--text:#f4f7ff;--muted:#9aa9c0;--blue:#4b9cff;--violet:#9270ff;--cyan:#63d5ff}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 50% -18%,#18396b 0,transparent 48%),radial-gradient(ellipse at 90% 38%,#24174d 0,transparent 30%),var(--bg);color:var(--text);font:16px/1.65 Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif}
+a{color:inherit;text-decoration:none}.wrap{width:min(1120px,calc(100% - 40px));margin:auto}.nav{height:76px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #ffffff12}.brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.12em}.brand img{width:34px;height:34px}.navlinks{display:flex;gap:24px;color:var(--muted);font-size:14px}.navlinks a:hover{color:white}
+.hero{padding:112px 0 92px;text-align:center}.eyebrow{display:inline-flex;align-items:center;gap:9px;padding:7px 13px;border:1px solid #4b9cff55;background:#10213a99;border-radius:99px;color:#a9d3ff;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}.dot{width:7px;height:7px;border-radius:50%;background:#66d6a8;box-shadow:0 0 14px #66d6a8}.hero h1{font-size:clamp(48px,9vw,92px);line-height:.98;letter-spacing:-.075em;margin:28px 0 18px}.gradient{background:linear-gradient(100deg,#f8fbff 15%,#78baff 53%,#a78bfa 90%);-webkit-background-clip:text;background-clip:text;color:transparent}.tagline{font-size:clamp(18px,2.4vw,23px);color:#d1dbee;margin:0}.sub{max-width:680px;margin:18px auto 30px;color:var(--muted)}.actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}.btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 19px;border-radius:10px;border:1px solid var(--line);font-weight:700;font-size:14px;transition:.2s}.btn.primary{background:linear-gradient(110deg,#287fe8,#7355dc);border:0;box-shadow:0 10px 35px #286fe744}.btn:hover{transform:translateY(-2px);border-color:#639eea}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;max-width:760px;margin:55px auto 0}.stat{padding:16px;border:1px solid #ffffff12;background:#0c1422bb;border-radius:13px}.stat strong{display:block;font-size:19px}.stat span{color:var(--muted);font-size:12px}
+section{padding:65px 0}.section-head{max-width:660px;margin-bottom:28px}.kicker{color:var(--cyan);font-size:11px;font-weight:800;letter-spacing:.17em;text-transform:uppercase}.section-head h2{font-size:clamp(30px,5vw,44px);line-height:1.1;letter-spacing:-.045em;margin:10px 0}.section-head p{color:var(--muted);margin:0}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.card{padding:22px;border:1px solid var(--line);border-radius:15px;background:linear-gradient(145deg,#121d30,#0d1421);min-height:174px}.glyph{width:38px;height:38px;border-radius:11px;display:grid;place-items:center;background:#1b3d68;color:#9dccff;font-size:18px;margin-bottom:17px}.card h3{margin:0 0 7px;font-size:17px}.card p{margin:0;color:var(--muted);font-size:14px}
+.status{border:1px solid #7256c955;background:linear-gradient(110deg,#141b31,#17122b);padding:25px;border-radius:17px;display:flex;justify-content:space-between;align-items:center;gap:20px}.status p{margin:6px 0 0;color:var(--muted);font-size:14px}.pill{white-space:nowrap;border:1px solid #8c78ff66;background:#5d49a322;color:#c9bcff;border-radius:99px;padding:6px 11px;font-size:11px;font-weight:800;letter-spacing:.08em}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.step{border-top:1px solid var(--line);padding:18px 5px}.num{color:var(--blue);font-weight:800;font-size:12px;letter-spacing:.1em}.step h3{margin:8px 0}.step p{color:var(--muted);font-size:14px;margin:0}
+footer{border-top:1px solid #ffffff12;padding:28px 0 38px;color:var(--muted);font-size:13px}.foot{display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}
+@media(max-width:760px){.hero{padding:82px 0 65px}.grid,.steps{grid-template-columns:1fr 1fr}.navlinks{gap:12px}.navlinks a:nth-child(2){display:none}.status{align-items:flex-start;flex-direction:column}}
+@media(max-width:520px){.grid,.steps{grid-template-columns:1fr}.stats{grid-template-columns:1fr}.navlinks a:nth-child(3){display:none}.wrap{width:min(100% - 28px,1120px)}}
+</style>
+</head>
+<body>
+<header class="wrap nav">
+<a class="brand" href="#"><img src="assets/azul-nex-mark.svg" alt=""> AZUL NEX</a>
+<nav class="navlinks" aria-label="Main navigation"><a href="#features">Features</a><a href="#status">Development</a><a href="#start">Get started</a><a href="https://github.com/Azuliciado/AZUL-NEX">GitHub ↗</a></nav>
+</header>
+<main>
+<div class="wrap hero">
+<div class="eyebrow"><span class="dot"></span> Windows · Android Virtual Devices</div>
+<h1><span class="gradient">AZUL NEX</span></h1>
+<p class="tagline">One PC. Infinite Devices.</p>
+<p class="sub">A modern Windows control center for Android virtual devices. Manage emulator sessions, discover AVDs, and use essential ADB controls from one focused workspace.</p>
+<div class="actions"><a class="btn primary" href="https://github.com/Azuliciado/AZUL-NEX">Explore on GitHub ↗</a><a class="btn" href="https://github.com/Azuliciado/AZUL-NEX/actions">View build status</a></div>
+<div class="stats"><div class="stat"><strong>Windows 10 / 11</strong><span>Desktop target</span></div><div class="stat"><strong>.NET 8 + WPF</strong><span>Application stack</span></div><div class="stat"><strong>Alpha</strong><span>Early development</span></div></div>
+</div>
+<section class="wrap" id="features">
+<div class="section-head"><div class="kicker">Inside the workspace</div><h2>Less terminal hopping.<br>More control.</h2><p>AZUL NEX is being built around practical emulator management, with a clear line between what works now and what is still on the roadmap.</p></div>
+<div class="grid">
+<article class="card"><div class="glyph">⌕</div><h3>AVD discovery</h3><p>Find Android Virtual Devices already configured in your Android SDK.</p></article>
+<article class="card"><div class="glyph">↗</div><h3>Launch & inspect</h3><p>Request an emulator launch and refresh the list of ADB-connected instances.</p></article>
+<article class="card"><div class="glyph">⌘</div><h3>Essential controls</h3><p>Send Back, Home, and Recent navigation events to a selected emulator.</p></article>
+<article class="card"><div class="glyph">⇧</div><h3>APK installation</h3><p>Choose an APK and install it on a running emulator through ADB.</p></article>
+<article class="card"><div class="glyph">◫</div><h3>Display presets</h3><p>Browse starter screen-size references for common phone and tablet layouts.</p></article>
+<article class="card"><div class="glyph">◈</div><h3>Built to expand</h3><p>Device creation, adaptive input mapping, and multi-instance workflows are planned.</p></article>
+</div>
+</section>
+<section class="wrap" id="status">
+<div class="status"><div><div class="kicker">Development status</div><h2 style="margin:7px 0 0;font-size:25px">Early access · Alpha</h2><p>Features are being implemented and verified. No stable release or guaranteed installer is advertised yet.</p></div><span class="pill">IN ACTIVE DEVELOPMENT</span></div>
+</section>
+<section class="wrap" id="start">
+<div class="section-head"><div class="kicker">Get started</div><h2>Bring your Android SDK.</h2><p>AZUL NEX currently manages the official Android Emulator and ADB installed on your PC. Those components and an AVD must be set up separately.</p></div>
+<div class="steps">
+<div class="step"><div class="num">01 / REQUIREMENTS</div><h3>Install Android tools</h3><p>Set up Android SDK Platform-Tools, Android Emulator, and create an AVD in Android Studio Device Manager.</p></div>
+<div class="step"><div class="num">02 / SOURCE</div><h3>Clone the project</h3><p>Get the source from GitHub and install the .NET 8 SDK to build the Windows app.</p></div>
+<div class="step"><div class="num">03 / RUN</div><h3>Launch AZUL NEX</h3><p>Run the WPF project and point ANDROID_SDK_ROOT to your SDK folder if automatic detection misses it.</p></div>
+</div>
+<div class="actions" style="justify-content:flex-start;margin-top:25px"><a class="btn primary" href="https://github.com/Azuliciado/AZUL-NEX#-getting-started">Read setup instructions ↗</a><a class="btn" href="ES.html">Documentación en español</a></div>
+</section>
+</main>
+<footer><div class="wrap foot"><span>© Azuliciado · AZUL NEX</span><span>Built with curiosity. Designed for control.</span><span><a href="https://github.com/Azuliciado/AZUL-NEX">Source code ↗</a></span></div></footer>
+</body>
+</html>
