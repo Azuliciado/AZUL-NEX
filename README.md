@@ -25,7 +25,7 @@
 
 ## ✦ What is AZUL NEX?
 
-AZUL NEX brings common Android Virtual Device (AVD) tasks into one Windows desktop workspace. Instead of jumping between terminal commands, it gives you a focused place to discover emulators, request launches, inspect connected instances, and send basic controls.
+AZUL NEX brings common Android Virtual Device (AVD) tasks into one Windows desktop workspace. Instead of jumping between terminal commands, it gives you a focused place to discover emulators, install official Android system images, create virtual device profiles, launch instances, and send basic controls.
 
 Built by **Azuliciado**, with a dark interface, electric-blue accents, and a performance-conscious direction.
 
@@ -35,16 +35,27 @@ Built by **Azuliciado**, with a dark interface, electric-blue accents, and a per
 |---|---|---|
 | SDK detection | Finds common Android SDK locations and environment variables | Implemented |
 | AVD library | Lists AVDs already configured in Android Emulator | Implemented |
+| Device installer | Installs Android API 33–36 Google APIs x86_64 images and creates AVDs from SDK hardware profiles | Basic |
 | Emulator launch | Requests launch of a selected AVD | Implemented |
 | Running devices | Lists ADB-connected emulator instances | Implemented |
 | Device controls | Sends Back, Home, and Recent key events | Implemented |
 | APK install | Installs an APK on a selected running emulator | Implemented |
 | Display presets | Shows a small set of example screen-size presets | Basic |
-| Device creation | Create and configure AVDs inside AZUL NEX | Planned |
 | Input mapping | Custom keyboard, mouse, and multi-touch mapping | Planned |
 | Multi-instance tools | Clone, import, export, and organize device profiles | Planned |
 
-The display presets are reference values only. They do not install Samsung, Google, Xiaomi, or other manufacturers' firmware and do not turn an AVD into a genuine device.
+The Device Installer uses official Android SDK system images and hardware definitions available in the installed SDK. Device profiles define virtual hardware configuration; they do not install Samsung, Google, Xiaomi, or other manufacturers' firmware and do not turn an AVD into a genuine physical device.
+
+## ◈ Device Installer
+
+Open **Device Installer** in AZUL NEX, choose an available emulator hardware profile, select an Android release (API 33, 34, 35, or 36), name the virtual device, and click **Install Device**. AZUL NEX uses the official SDK Manager and AVD Manager to review SDK licenses, download the matching Google APIs x86_64 system image, and create the AVD.
+
+Requirements:
+- Android SDK installed and detected.
+- Android SDK Command-line Tools (latest).
+- Internet access for downloading system images.
+- Review and acceptance of applicable Android SDK component licenses.
+- Sufficient free disk space, memory, and CPU virtualization support.
 
 ## ▣ Project direction
 
@@ -62,12 +73,12 @@ The display presets are reference values only. They do not install Samsung, Goog
 - .NET 8 SDK to build from source (or the .NET 8 Desktop Runtime for framework-dependent builds).
 - Android SDK Platform-Tools (ADB).
 - Android Emulator.
-- At least one configured Android Virtual Device (AVD).
+- Android SDK Command-line Tools (latest) for the Device Installer.
 - Hardware virtualization configured as required by your Android Emulator installation.
 
 ### 1. Install Android tools
 
-Install Android Studio or the Android SDK command-line tools. In SDK Manager, install **Android Emulator** and **Android SDK Platform-Tools**, then create an AVD in Device Manager.
+Install Android Studio or the Android SDK command-line tools. In SDK Manager, install **Android Emulator**, **Android SDK Platform-Tools**, and **Android SDK Command-line Tools (latest)**. You can create AVDs in Device Manager or use the AZUL NEX Device Installer.
 
 ### 2. Get the source
 
