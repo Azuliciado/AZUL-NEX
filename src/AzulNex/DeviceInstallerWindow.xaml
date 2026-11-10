@@ -29,21 +29,14 @@
         </Style>
     </Window.Resources>
     <Grid Margin="28">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
+        <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="*"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
         <StackPanel Margin="0,0,0,22">
-            <TextBlock Text="DEVICE INSTALLER" Foreground="#55A7FF" FontSize="11" FontWeight="Bold" CharacterSpacing="2"/>
+            <TextBlock Text="DEVICE INSTALLER" Foreground="#55A7FF" FontSize="11" FontWeight="Bold"/>
             <TextBlock Text="Build your virtual device" FontSize="30" FontWeight="SemiBold" Margin="0,5,0,4"/>
             <TextBlock Text="Choose a hardware profile and Android release. AZUL NEX downloads the official SDK image and creates the emulator for you." Foreground="#9AA8BC" TextWrapping="Wrap" FontSize="13"/>
         </StackPanel>
         <Grid Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1.2*"/>
-                <ColumnDefinition Width="0.8*"/>
-            </Grid.ColumnDefinitions>
+            <Grid.ColumnDefinitions><ColumnDefinition Width="1.2*"/><ColumnDefinition Width="0.8*"/></Grid.ColumnDefinitions>
             <Border Background="#111827" CornerRadius="14" Padding="22" Margin="0,0,12,0">
                 <StackPanel>
                     <TextBlock Text="01  DEVICE MODEL" Foreground="#55A7FF" FontSize="11" FontWeight="Bold"/>
@@ -54,7 +47,7 @@
                     <ComboBox x:Name="AndroidVersionCombo" DisplayMemberPath="Label" SelectionChanged="SelectionChanged"/>
                     <TextBlock Text="03  VIRTUAL DEVICE NAME" Foreground="#55A7FF" FontSize="11" FontWeight="Bold"/>
                     <TextBox x:Name="AvdNameBox" Text="AZUL_Pixel_API_36"/>
-                    <CheckBox x:Name="LicenseCheckBox" Foreground="#B8C5D8" Content="I agree to review and accept the Android SDK component licenses" IsChecked="False" Margin="0,0,0,18" TextWrapping="Wrap"/>
+                    <CheckBox x:Name="LicenseCheckBox" Foreground="#B8C5D8" Content="I have already accepted the Android SDK component licenses in Android Studio" IsChecked="False" Margin="0,0,0,18"/>
                     <Button x:Name="InstallButton" Content="↓   INSTALL DEVICE" Click="Install_Click" Height="46" Background="#1768C5"/>
                     <ProgressBar x:Name="InstallProgress" Height="4" IsIndeterminate="True" Visibility="Collapsed" Margin="0,16,0,8"/>
                     <TextBlock x:Name="StatusText" Text="Ready when you are. Select a device and Android version." Foreground="#9AA8BC" TextWrapping="Wrap" Margin="0,8,0,0"/>
