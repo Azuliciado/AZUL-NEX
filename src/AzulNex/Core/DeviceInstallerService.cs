@@ -28,7 +28,6 @@ public sealed class DeviceInstallerService
     private string? FindCommandLineTool(string fileName)
     {
         if (SdkPath is null) return null;
-
         var root = Path.Combine(SdkPath, "cmdline-tools");
         if (!Directory.Exists(root)) return null;
 
@@ -48,7 +47,7 @@ public sealed class DeviceInstallerService
 
         var avdManager = AvdManagerPath;
         if (avdManager is null)
-            throw new InvalidOperationException("Android SDK Command-line Tools are missing. Open Android Studio > SDK Manager > SDK Tools and install Android SDK Command-line Tools (latest).");
+            throw new InvalidOperationException("Android SDK Command-line Tools are missing. Install Android SDK Command-line Tools (latest) from Android Studio > SDK Manager > SDK Tools.");
 
         var result = await RunBatchAsync(avdManager, $"--sdk_root=\"{SdkPath}\" list device", null, 60000, null);
         if (result.ExitCode != 0)
@@ -60,7 +59,7 @@ public sealed class DeviceInstallerService
 
         foreach (var line in result.Output.Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries))
         {
-            var idMatch = Regex.Match(line, @"id:\s*(?:\d+\s+or\s+)?\"(?<id>[^\"]+)\"", RegexOptions.IgnoreCase);
+            var idMatch = Regex.Match(line, @"id:\s*(?:\d+\s+or\s+)?""(?<id>[^""]+)""", RegexOptions.IgnoreCase);
             if (idMatch.Success)
             {
                 if (currentId is not null && currentName is not null)
@@ -109,19 +108,7 @@ public sealed class DeviceInstallerService
 
         var imagePackage = $"system-images;android-{api};google_apis;x86_64";
 
-        progress?.Report("Step 1 of 3 — Reviewing Android SDK component licenses...");
-        var licenses = await RunBatchAsync(
-            sdkManager,
-            $"--sdk_root=\"{SdkPath}\" --licenses",
-            string.Concat(Enumerable.Repeat("y\n", 40)),
-            180000,
-            progress,
-            cancellationToken);
-
-        if (licenses.ExitCode != 0)
-            throw new InvalidOperationException("Android SDK license review did not complete. " + TrimOutput(licenses.Output));
-
-        progress?.Report($"Step 2 of 3 — Downloading Android {api} system image and SDK platform. This may take a while...");
+        progress?.Report("Step 1 of 2 — Downloading Android SDK platform and system image. This may take a while...");
         var packages = await RunBatchAsync(
             sdkManager,
             $"--sdk_root=\"{SdkPath}\" \"platform-tools\" \"platforms;android-{api}\" \"{imagePackage}\"",
@@ -131,9 +118,14 @@ public sealed class DeviceInstallerService
             cancellationToken);
 
         if (packages.ExitCode != 0)
-            throw new InvalidOperationException("Android SDK package installation failed. " + TrimOutput(packages.Output));
+        {
+            var hint = packages.Output.Contains("license", StringComparison.OrdinalIgnoreCase)
+                ? " Open Android Studio > SDK Manager, review and accept the Android SDK licenses, then retry."
+                : string.Empty;
+            throw new InvalidOperationException("Android SDK package installation failed." + hint + " " + TrimOutput(packages.Output));
+        }
 
-        progress?.Report($"Step 3 of 3 — Creating {device.Name} with Android API {api}...");
+        progress?.Report($"Step 2 of 2 — Creating {device.Name} with Android API {api}...");
         var avd = await RunBatchAsync(
             avdManager,
             $"--sdk_root=\"{SdkPath}\" create avd -n \"{avdName}\" -k \"{imagePackage}\" -d \"{device.Id}\"",
