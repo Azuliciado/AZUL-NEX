@@ -48,13 +48,15 @@ The Device Installer uses official Android SDK system images and hardware defini
 
 ## ◈ Device Installer
 
-Open **Device Installer** in AZUL NEX, choose an available emulator hardware profile, select an Android release (API 33, 34, 35, or 36), name the virtual device, and click **Install Device**. AZUL NEX uses the official SDK Manager and AVD Manager to review SDK licenses, download the matching Google APIs x86_64 system image, and create the AVD.
+Open **Device Installer** in AZUL NEX, choose an available emulator hardware profile, select an Android release (API 33, 34, 35, or 36), name the virtual device, and click **Install Device**. AZUL NEX uses the official SDK Manager and AVD Manager to download the matching Google APIs x86_64 system image and create the AVD.
+
+Before using the installer, open Android Studio > SDK Manager and review and accept the applicable Android SDK component licenses. AZUL NEX does not automatically accept license agreements.
 
 Requirements:
 - Android SDK installed and detected.
 - Android SDK Command-line Tools (latest).
 - Internet access for downloading system images.
-- Review and acceptance of applicable Android SDK component licenses.
+- Applicable Android SDK component licenses accepted by the user.
 - Sufficient free disk space, memory, and CPU virtualization support.
 
 ## ▣ Project direction
@@ -78,28 +80,28 @@ Requirements:
 
 ### 1. Install Android tools
 
-Install Android Studio or the Android SDK command-line tools. In SDK Manager, install **Android Emulator**, **Android SDK Platform-Tools**, and **Android SDK Command-line Tools (latest)**. You can create AVDs in Device Manager or use the AZUL NEX Device Installer.
+Install Android Studio or the Android SDK command-line tools. In SDK Manager, install **Android Emulator**, **Android SDK Platform-Tools**, and **Android SDK Command-line Tools (latest)**. Review and accept the SDK component licenses there. You can create AVDs in Device Manager or use the AZUL NEX Device Installer.
 
 ### 2. Get the source
 
-```bash
+\`\`\`bash
 git clone https://github.com/Azuliciado/AZUL-NEX.git
 cd AZUL-NEX
-```
+\`\`\`
 
 ### 3. Run AZUL NEX
 
-```bash
+\`\`\`bash
 dotnet run --project src/AzulNex/AzulNex.csproj
-```
+\`\`\`
 
-If the SDK is not detected automatically, set `ANDROID_SDK_ROOT` to your Android SDK directory and restart the app.
+If the SDK is not detected automatically, set \`ANDROID_SDK_ROOT\` to your Android SDK directory and restart the app.
 
 ### 4. Publish a standalone Windows build
 
-```bash
+\`\`\`bash
 dotnet publish src/AzulNex/AzulNex.csproj -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true
-```
+\`\`\`
 
 The GitHub Actions workflow also builds the Windows app and packages an installer. Check the [Actions page](https://github.com/Azuliciado/AZUL-NEX/actions) for the latest result. A public installer should only be considered available after a successful workflow and a published release.
 
