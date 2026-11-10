@@ -89,10 +89,11 @@ public partial class MainWindow : Window
         catch (Exception ex) { ShowError(ex); }
     }
 
-    private void DeviceInstaller_Click(object sender, RoutedEventArgs e)
+    private async void DeviceInstaller_Click(object sender, RoutedEventArgs e)
     {
         var window = new DeviceInstallerWindow { Owner = this };
         window.ShowDialog();
+        try { await RefreshAsync(); } catch (Exception ex) { ShowError(ex); }
     }
 
     private void Library_Click(object sender, RoutedEventArgs e)
